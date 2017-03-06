@@ -6,10 +6,13 @@
 
 #================== Globals ==================================================
 # Version
-VERSION="0.2"
+VERSION="0.3"
 
 # Configuration
 HOST_FILE="$HOME/.ssh/config"
+
+# test connection
+TEST=1
 
 #================== Functions ================================================
 
@@ -76,7 +79,9 @@ function main (){
   for a in $(get_name); do
     addr=$(get_addr $a)
     arr[$i]=$a
-    test_host $addr
+    if (($TEST)); then
+      test_host $addr
+    fi
     printf "%15s\t(%2s)\t%s\n" $a $i $addr
     i=$((i+1))
   done
@@ -89,4 +94,13 @@ function main (){
 }
 
 #=============================================================================
+# If there are params call original ssh
+if [ $# -gt 0 ]; then
+  for i in $@;do
+    params=" $params $i"
+  done
+  /usr/bin/ssh $params
+  exit
+fi
+
 main
