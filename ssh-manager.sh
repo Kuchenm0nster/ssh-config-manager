@@ -6,7 +6,7 @@
 
 #================== Globals ==================================================
 # Version
-VERSION="0.1"
+VERSION="0.2"
 
 # Configuration
 HOST_FILE="$HOME/.ssh/config"
@@ -66,7 +66,7 @@ function get_name (){
 }
 
 function get_addr (){
-	grep -A 1 "$1" $HOST_FILE|grep -i HostName|cut -d" " -f4
+	grep -A1 "$1" $HOST_FILE|grep -im1 HostName|cut -d" " -f4
 }
 
 function main (){
@@ -79,7 +79,6 @@ function main (){
     printf "%15s\t(%2s)\t%s\n" $a $i $addr
     i=$((i+1))
   done
-
   while true; do
     read -p "Connect with:" num
     ssh -i $HOST_FILE ${arr[$num]}
