@@ -2,7 +2,7 @@
 #########################################
 # Script by Thorben Rudeloff
 # Contact at thorben.rudeloff@mni.thm.de
-# Github https://github.com/
+# Github https://github.com/Kuchenm0nster/ssh-config-manager
 
 #================== Globals ==================================================
 # Version
