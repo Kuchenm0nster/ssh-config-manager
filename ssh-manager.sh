@@ -70,6 +70,7 @@ function get_addr (){
 }
 
 function main (){
+  clear
   i=0
   declare -a arr
   for a in $(get_name); do
